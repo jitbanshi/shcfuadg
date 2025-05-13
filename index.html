@@ -107,7 +107,7 @@
         /* कॉलेज की मुख्य तस्वीर और साइड बटन के लिए स्टाइल */
         .college-main-photo {
             margin-top: 30px;
-            position: relative; /* मोबाइल मेनू बटन के लिए */
+            /* position: relative; -- अब आवश्यक नहीं */
         }
         
         /* मोबाइल के लिए हैमबर्गर मेनू बटन */
@@ -121,19 +121,30 @@
             border-radius: 5px;
             cursor: pointer;
             margin-bottom: 15px;
+            width: 100%; /* मोबाइल पर पूरी चौड़ाई ले */
         }
 
         .photo-with-side-buttons-wrapper {
-            /* यह रैपर मोबाइल पर छिपाने/दिखाने के लिए है */
+            /* यह रैपर मोबाइल पर छिपाने/दिखाने के लिए है, सिर्फ बटनों के लिए */
         }
         
-        .photo-with-side-buttons {
+        .photo-with-side-buttons { /* डेस्कटॉप पर बटनों और फोटो (यदि अंदर होता) के लिए कंटेनर */
             display: flex;
             justify-content: space-between; 
             align-items: flex-start; 
             gap: 20px; 
-            margin-top: 20px;
+            /* margin-top: 20px; -- अब रैपर में नहीं, बल्कि college-main-photo में एडजस्ट होगा */
         }
+        
+        /* यह क्लास अब केवल बटनों के दो कॉलम को रैप करेगी, फोटो बाहर है */
+        .buttons-container-for-desktop {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%; /* यह फोटो के साथ फ्लेक्स में होगा */
+            gap: 20px;
+        }
+
 
         .side-buttons-column {
             display: flex; /* डेस्कटॉप पर दिखेगा */
@@ -159,10 +170,18 @@
             transform: translateY(-2px);
         }
 
+        /* मुख्य फोटो कंटेनर - यह अब अलग से स्टाइल होगा और हमेशा दिखेगा */
+        .main-photo-display-area {
+            display: flex; /* डेस्कटॉप पर बटनों के साथ अलाइन करने के लिए */
+            align-items: flex-start; /* यदि बटन और फोटो की ऊंचाई अलग हो */
+            gap: 20px; /* फोटो और बटन कॉलम के बीच गैप */
+            margin-top: 20px;
+        }
+
         .single-photo-container {
             flex-grow: 1; 
             max-width: 700px; 
-            margin: 0 auto; 
+            margin: 0 auto; /* सेंटर में लाने के लिए यदि अकेली हो */
             border-radius: 10px;
             overflow: hidden; 
             box-shadow: 0 6px 18px rgba(0,0,0,0.15);
@@ -250,8 +269,8 @@
         /* रिस्पॉन्सिव स्टाइल - मोबाइल और छोटे टैबलेट के लिए (992px से कम) */
         @media (max-width: 992px) {
             .header {
-                padding: 20px; /* मोबाइल के लिए थोड़ी कम पैडिंग */
-                flex-direction: column; /* लोगो और नाम को स्टैक करें */
+                padding: 20px; 
+                flex-direction: column; 
                 text-align: center;
             }
             .header img.logo {
@@ -277,48 +296,56 @@
                 border-bottom: none;
             }
 
-
             .mobile-menu-button {
-                display: block; /* मोबाइल पर मेनू बटन दिखाएं */
-                width: 100%;
+                display: block; 
             }
             
-            .photo-with-side-buttons-wrapper {
-                /* मोबाइल मेनू के खुलने-बंद होने का ट्रांजीशन */
+            .photo-with-side-buttons-wrapper { /* यह सिर्फ बटनों को रैप करता है */
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.5s ease-in-out;
+                width: 100%; /* यह सुनिश्चित करे कि यह पूरी चौड़ाई ले */
             }
             .photo-with-side-buttons-wrapper.open {
-                max-height: 1500px; /* कंटेंट के अनुसार पर्याप्त ऊंचाई दें */
+                max-height: 1500px; 
             }
 
-            .photo-with-side-buttons {
-                flex-direction: column; /* स्टैक करें: बटन, फोटो, बटन */
+            /* डेस्कटॉप के लिए बटन कंटेनर को मोबाइल पर छिपाएं */
+            .buttons-container-for-desktop {
+                display: none;
+            }
+            
+            /* मोबाइल पर फोटो और बटन रैपर के लिए */
+            .college-main-photo {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .single-photo-container { /* फोटो हमेशा दिखेगी */
+                order: -1; /* मेनू बटन के बाद, लेकिन बटन रैपर से पहले */
+                width: 95%;
+                max-width: 500px; /* मोबाइल पर फोटो का आकार */
+                margin-bottom: 20px; /* फोटो और बटन रैपर के बीच स्पेस */
+            }
+            
+            .photo-with-side-buttons { /* यह wrapper के अंदर है, बटनों को स्टैक करेगा */
+                flex-direction: column; 
                 align-items: center; 
-                margin-top: 0; /* क्योंकि रैपर में मार्जिन बॉटम है */
+                width: 100%;
             }
             .side-buttons-column {
-                width: 90%; /* मोबाइल पर कॉलम की चौड़ाई */
+                width: 90%; 
                 max-width: 400px;
-                margin-bottom: 20px; /* कॉलम के बीच स्पेस */
-                 /* display: flex; -- यह जावास्क्रिप्ट से नियंत्रित होगा */
+                margin-bottom: 10px; /* बाएं और दाएं कॉलम के बीच का स्पेस अगर अलग-अलग स्टैक हों */
             }
-            .side-buttons-column.left-buttons {
-                order: 1; /* मोबाइल पर पहला बटन कॉलम */
-            }
-            .single-photo-container {
-                order: 2; /* मोबाइल पर फोटो बीच में */
-                width: 95%;
-                margin-bottom: 20px;
-            }
-             .side-buttons-column.right-buttons {
-                order: 3; /* मोबाइल पर दूसरा बटन कॉलम */
+             .side-buttons-column.left-buttons {
+                margin-bottom: 20px; /* पहले बटन कॉलम के बाद थोड़ा ज्यादा स्पेस */
             }
 
 
             .content-area {
-                margin-right: 10px; /* सोशल साइडबार के लिए बहुत कम जगह */
+                margin-right: 10px; 
                 margin-left: 10px;
                 padding: 15px;
             }
@@ -380,8 +407,15 @@
                 
                 <button class="mobile-menu-button" id="mobileMenuToggleBtn">☰ Quick Links Menu</button>
 
+                <!-- फोटो अब मोबाइल मेनू रैपर के बाहर है -->
+                <div class="single-photo-container" id="mainCampusPhotoContainer">
+                    <img src="main-college-photo.jpg" alt="Beautiful view of the College Campus">
+                </div>
+                
+                <!-- यह रैपर सिर्फ बटनों के लिए है और मोबाइल पर टॉगल होगा -->
                 <div class="photo-with-side-buttons-wrapper" id="sideButtonsWrapper">
-                    <div class="photo-with-side-buttons">
+                    <!-- यह div डेस्कटॉप पर फ्लेक्स लेआउट बनाए रखने में मदद करता है -->
+                    <div class="buttons-container-for-desktop">
                         <div class="side-buttons-column left-buttons">
                             <a href="#" class="side-btn">Books</a>
                             <a href="#" class="side-btn">Online Class</a>
@@ -391,11 +425,8 @@
                             <a href="#" class="side-btn">Teachers</a>
                             <a href="#" class="side-btn">Courses</a>
                         </div>
-
-                        <div class="single-photo-container">
-                            <img src="main-college-photo.jpg" alt="Beautiful view of the College Campus">
-                        </div>
-
+                        <!-- डेस्कटॉप व्यू में फोटो के लिए जगह (अब फोटो ऊपर है, इसलिए यह खाली रह सकता है या इसे हटाया जा सकता है) -->
+                        <!-- <div style="flex-grow: 1; max-width: 700px;"></div> --> <!-- अस्थायी प्लेसहोल्डर, या इसे हटाएं-->
                         <div class="side-buttons-column right-buttons">
                             <a href="#" class="side-btn">Hostel Photo</a>
                             <a href="#" class="side-btn">Important Question</a>
@@ -436,41 +467,70 @@
     <script>
         const mobileMenuToggleBtn = document.getElementById('mobileMenuToggleBtn');
         const sideButtonsWrapper = document.getElementById('sideButtonsWrapper');
+        const mainCampusPhotoContainer = document.getElementById('mainCampusPhotoContainer'); // फोटो कंटेनर
 
-        // डेस्कटॉप पर मेनू खुला रखें यदि स्क्रीन का आकार बदलता है
-        function checkScreenSize() {
-            if (window.innerWidth > 992) {
-                sideButtonsWrapper.classList.add('open'); // डेस्कटॉप पर हमेशा खुला
-                sideButtonsWrapper.style.maxHeight = 'none'; // max-height को हटाएं ताकि कंटेंट दिखे
-            } else {
-                // यदि मोबाइल व्यू पर है और पहले से खुला नहीं है, तो बंद रखें
+        function checkScreenSizeAndAdjustLayout() {
+            if (window.innerWidth > 992) { // डेस्कटॉप व्यू
+                sideButtonsWrapper.classList.add('open'); 
+                sideButtonsWrapper.style.maxHeight = 'none'; 
+                // डेस्कटॉप पर photo-with-side-buttons (अब buttons-container-for-desktop) और फोटो को main-photo-display-area में रखें
+                const desktopButtonContainer = document.querySelector('.buttons-container-for-desktop');
+                const mainPhotoDisplayArea = document.querySelector('.main-photo-display-area') || document.createElement('div');
+                mainPhotoDisplayArea.className = 'main-photo-display-area';
+
+                if (!document.querySelector('.main-photo-display-area')) {
+                    // यदि main-photo-display-area मौजूद नहीं है, तो इसे बनाएं और फोटो और बटन कंटेनर को इसमें डालें
+                    mainCampusPhotoContainer.parentNode.insertBefore(mainPhotoDisplayArea, mainCampusPhotoContainer.nextSibling);
+                    mainPhotoDisplayArea.appendChild(desktopButtonContainer.querySelector('.left-buttons'));
+                    mainPhotoDisplayArea.appendChild(mainCampusPhotoContainer); // फोटो को बीच में रखें
+                    mainPhotoDisplayArea.appendChild(desktopButtonContainer.querySelector('.right-buttons'));
+                }
+                 // सुनिश्चित करें कि wrapper सीधे desktopButtonContainer को न दिखाए, बल्कि desktopButtonContainer अपने बटन दिखाए
+                desktopButtonContainer.style.display = 'flex';
+
+
+            } else { // मोबाइल व्यू
+                // यदि मैन्युअल रूप से नहीं खोला गया है, तो बंद करें
                 if (!sideButtonsWrapper.classList.contains('open-manual')) {
                      sideButtonsWrapper.classList.remove('open');
                      sideButtonsWrapper.style.maxHeight = '0px';
+                }
+                // डेस्कटॉप के लिए विशिष्ट लेआउट हटाएं यदि मौजूद हो
+                const mainPhotoDisplayArea = document.querySelector('.main-photo-display-area');
+                if (mainPhotoDisplayArea) {
+                    // आइटम्स को उनके मूल स्थान पर वापस ले जाएं या मोबाइल संरचना को पुनर्स्थापित करें
+                    const photoSection = document.querySelector('.college-main-photo');
+                    const buttonsWrapper = document.getElementById('sideButtonsWrapper');
+                    const desktopButtonContainer = buttonsWrapper.querySelector('.buttons-container-for-desktop');
+                    
+                    photoSection.insertBefore(mainCampusPhotoContainer, buttonsWrapper); // फोटो को बटन रैपर से पहले ले जाएं
+                    if(desktopButtonContainer) desktopButtonContainer.style.display = 'none'; // डेस्कटॉप कंटेनर छिपाएं
                 }
             }
         }
 
         mobileMenuToggleBtn.addEventListener('click', () => {
             sideButtonsWrapper.classList.toggle('open');
-            sideButtonsWrapper.classList.toggle('open-manual'); // मैन्युअल टॉगल को ट्रैक करें
+            sideButtonsWrapper.classList.toggle('open-manual'); 
             if (sideButtonsWrapper.classList.contains('open')) {
-                // जब मेनू खुलता है, तो max-height को कंटेंट के अनुसार सेट करें
-                // या एक बड़ी पर्याप्त वैल्यू दें
                 sideButtonsWrapper.style.maxHeight = sideButtonsWrapper.scrollHeight + "px";
             } else {
                 sideButtonsWrapper.style.maxHeight = '0px';
             }
         });
 
-        // पेज लोड और रीसाइज पर स्क्रीन साइज की जाँच करें
-        window.addEventListener('load', checkScreenSize);
-        window.addEventListener('resize', checkScreenSize);
+        window.addEventListener('load', checkScreenSizeAndAdjustLayout);
+        window.addEventListener('resize', checkScreenSizeAndAdjustLayout);
         
         // शुरू में मोबाइल पर मेनू बंद रखें
         if (window.innerWidth <= 992) {
             sideButtonsWrapper.style.maxHeight = '0px';
             sideButtonsWrapper.classList.remove('open');
+            const desktopButtonContainer = document.querySelector('.buttons-container-for-desktop');
+            if(desktopButtonContainer) desktopButtonContainer.style.display = 'none';
+        } else {
+            // डेस्कटॉप पर शुरू में लेआउट सेट करें
+            checkScreenSizeAndAdjustLayout();
         }
 
     </script>
