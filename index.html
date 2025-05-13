@@ -21,7 +21,7 @@
         .header {
             background-color: #005A9C;
             color: white;
-            padding: 20px 30px; /* मोबाइल के लिए थोड़ी कम पैडिंग */
+            padding: 20px 30px; 
             display: flex;
             align-items: center;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -43,9 +43,24 @@
             font-weight: 700; 
         }
 
+        /* बैनर स्टाइल */
+        .banner {
+            background-color: #007BCC; /* नेवबार जैसा या थोड़ा अलग रंग */
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .banner p {
+            margin: 0;
+        }
+
+
         /* नेविगेशन बार स्टाइल */
         .navbar {
-            background-color: #007BCC;
+            background-color: #006BB5; /* बैनर से थोड़ा गहरा कर सकते हैं */
             overflow: hidden;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
@@ -62,9 +77,9 @@
             display: block;
             color: white;
             text-align: center;
-            padding: 14px 20px; /* थोड़ी कम पैडिंग */
+            padding: 14px 20px; 
             text-decoration: none;
-            font-size: 1em; /* थोड़ा छोटा फ़ॉन्ट */
+            font-size: 1em; 
             transition: background-color 0.3s ease;
         }
 
@@ -81,7 +96,7 @@
         
         .content-area {
             flex-grow: 1;
-            padding: 20px; /* थोड़ी कम पैडिंग */
+            padding: 20px; 
             background-color: white;
             margin: 0 auto; 
             max-width: 1200px; 
@@ -94,7 +109,7 @@
             border-bottom: 3px solid #007BCC;
             padding-bottom: 10px;
             margin-top: 0;
-            font-size: 1.6em; /* थोड़ा छोटा */
+            font-size: 1.6em; 
             text-align: center; 
         }
         
@@ -119,16 +134,16 @@
             font-size: 1.1em;
             border-radius: 5px;
             cursor: pointer;
-            margin: 0 auto 15px auto; /* सेंटर में और नीचे मार्जिन */
+            margin: 0 auto 15px auto; 
             width: 95%;
-            max-width: 400px; /* अधिकतम चौड़ाई */
+            max-width: 400px; 
             text-align: center;
         }
 
         .single-photo-container { 
             width: 100%;
-            max-width: 600px; /* डेस्कटॉप पर फोटो का आकार */
-            margin: 0 auto 20px auto; /* ऊपर/नीचे मार्जिन, हॉरिजॉन्टल सेंटर */
+            max-width: 600px; 
+            margin: 0 auto 20px auto; 
             border-radius: 10px;
             overflow: hidden; 
             box-shadow: 0 6px 18px rgba(0,0,0,0.15);
@@ -141,19 +156,18 @@
             border-radius: 10px; 
         }
         
-        /* यह कंटेनर सिर्फ बटनों को रैप करेगा */
         #sideButtonsContainerMobile {
-            display: flex; /* डेस्कटॉप पर यह फ्लेक्स होगा */
-            flex-direction: row; /* डेस्कटॉप पर साइड-बाई-साइड */
-            justify-content: space-between; /* डेस्कटॉप पर स्पेस */
-            gap: 20px; /* डेस्कटॉप पर गैप */
+            display: flex; 
+            flex-direction: row; 
+            justify-content: space-between; 
+            gap: 20px; 
         }
 
         .side-buttons-column {
             display: flex;
             flex-direction: column;
             gap: 10px; 
-            width: 200px; /* डेस्कटॉप पर कॉलम की चौड़ाई */
+            width: 200px; 
         }
 
         .side-buttons-column a.side-btn {
@@ -175,13 +189,13 @@
 
         /* सोशल मीडिया साइडबार */
         .social-sidebar {
-            width: 50px; /* थोड़ा छोटा */
+            width: 50px; 
             background-color: #f8f9fa;
             padding-top: 10px; 
             padding-bottom: 10px; 
             position: fixed;
             right: 5px; 
-            top: 160px; /* हेडर के अनुसार एडजस्ट करें */
+            top: 220px; /* बैनर की ऊंचाई के अनुसार थोड़ा और नीचे */
             height: auto;
             border: 1px solid #dee2e6;
             box-shadow: -2px 0 5px rgba(0,0,0,0.07);
@@ -212,7 +226,7 @@
         }
 
         .social-icon svg {
-            width: 20px; /* थोड़ा छोटा */
+            width: 20px; 
             height: 20px;
             fill: white; 
         }
@@ -228,7 +242,7 @@
             background-color: #343a40;
             color: #f8f9fa;
             text-align: center;
-            padding: 15px; /* थोड़ी कम पैडिंग */
+            padding: 15px; 
             margin-top: auto;
         }
         .footer p {
@@ -285,7 +299,7 @@
                 padding-top: 15px;
                 padding-bottom: 15px;
                 right: 10px;
-                top: 200px;
+                top: 250px; /* बैनर की वजह से और नीचे */
                 gap: 10px;
                 border-radius: 10px;
             }
@@ -301,40 +315,39 @@
             .footer p { font-size: 0.9em; }
 
 
-            .college-main-photo { /* यह ग्रिड कंटेनर होगा */
+            .college-main-photo { 
                 display: grid;
-                grid-template-columns: 220px 1fr 220px; /* लेफ्ट-फोटो-राइट, चौड़ाई एडजस्ट करें */
+                grid-template-columns: 220px 1fr 220px; 
                 gap: 25px;
-                align-items: flex-start; /* आइटम्स को ऊपर से अलाइन करें */
+                align-items: flex-start; 
                 margin-top: 25px;
             }
-            .mobile-menu-button { display: none !important; } /* डेस्कटॉप पर हमेशा छिपा रहेगा */
+            .mobile-menu-button { display: none !important; } 
 
             .college-main-photo .single-photo-container {
-                grid-column: 2 / 3; /* फोटो बीच में */
-                order: 2; /* स्पष्टता के लिए */
-                max-width: none; /* ग्रिड सेल चौड़ाई लेगा */
-                margin: 0; /* ग्रिड गैप हैंडल करेगा */
+                grid-column: 2 / 3; 
+                order: 2; 
+                max-width: none; 
+                margin: 0; 
             }
             
-            /* #sideButtonsContainerMobile को डेस्कटॉप पर सीधे ग्रिड में भाग लेने के लिए */
             #sideButtonsContainerMobile {
-                display: contents; /* इसके बच्चे ग्रिड में भाग लेंगे */
-                max-height: none !important; /* JS द्वारा लगाई गई स्टाइल हटाएं */
+                display: contents; 
+                max-height: none !important; 
                 overflow: visible !important;
             }
 
             .college-main-photo .side-buttons-column.left-buttons {
                 grid-column: 1 / 2;
                 order: 1;
-                width: 100%; /* ग्रिड सेल की पूरी चौड़ाई ले */
-                display: flex !important; /* महत्वपूर्ण */
+                width: 100%; 
+                display: flex !important; 
             }
             .college-main-photo .side-buttons-column.right-buttons {
                 grid-column: 3 / 4;
                 order: 3;
-                width: 100%; /* ग्रिड सेल की पूरी चौड़ाई ले */
-                display: flex !important; /* महत्वपूर्ण */
+                width: 100%; 
+                display: flex !important; 
             }
         }
 
@@ -359,7 +372,7 @@
             }
             .navbar ul li:last-child { border-bottom: none; }
 
-            .college-main-photo { /* मोबाइल पर यह फ्लेक्स कॉलम होगा */
+            .college-main-photo { 
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -367,7 +380,7 @@
             .mobile-menu-button { display: block; }
             .single-photo-container { 
                 width: 95%;
-                max-width: 450px; /* मोबाइल पर फोटो थोड़ी छोटी */
+                max-width: 450px; 
                 margin-bottom: 15px; 
             }
             
@@ -376,19 +389,35 @@
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.4s ease-out;
-                display: flex; /* इसके अंदर के कॉलम को सही से रखने के लिए */
-                flex-direction: column; /* बटन कॉलम एक के नीचे एक */
-                align-items: center; /* बटन कॉलम को सेंटर में करें */
-                gap: 20px; /* लेफ्ट और राइट कॉलम के बीच गैप (जब स्टैक हों) */
+                display: flex; 
+                flex-direction: column; 
+                align-items: center; 
+                gap: 20px; 
             }
             #sideButtonsContainerMobile.open {
-                max-height: 1500px; /* JS इसे scrollHeight से सेट करेगा तो बेहतर */
-                padding-top: 10px; /* खुलने पर थोड़ा स्पेस */
+                max-height: 1500px; 
+                padding-top: 10px; 
                 padding-bottom: 10px;
             }
             #sideButtonsContainerMobile .side-buttons-column {
-                width: 90%; /* मोबाइल पर प्रत्येक बटन कॉलम की चौड़ाई */
+                width: 90%; 
                 max-width: 350px;
+            }
+            .social-sidebar { /* मोबाइल पर सोशल साइडबार का एडजस्टमेंट */
+                top: auto;
+                bottom: 10px;
+                right: 10px;
+                flex-direction: row;
+                width: auto;
+                padding: 5px;
+            }
+            .social-icon {
+                width: 36px;
+                height: 36px;
+            }
+            .social-icon svg {
+                width: 18px;
+                height: 18px;
             }
         }
 
@@ -400,6 +429,11 @@
         <img src="New folder (3)/365713089_3570831366532711_3348226603470402916_n.png" alt="College Logo" class="logo"> 
         <h1 class="college-name">Your College Name</h1>
     </header>
+
+    <div class="banner">
+        <img src="New folder (3)/365713089_3570831366532711_3348226603470402916_n.png" alt="College Logo" class="logo"> 
+        <p>आपका बैनर टेक्स्ट यहाँ! (इसे अपनी जरूरत के अनुसार बदलें)</p>
+    </div>
 
     <nav class="navbar">
         <ul>
@@ -489,33 +523,25 @@
             mobileMenuToggleBtn.addEventListener('click', () => {
                 const isOpen = sideButtonsContainer.classList.toggle('open');
                 if (isOpen) {
-                    // खोलने पर, scrollHeight का उपयोग करके max-height सेट करें
                     sideButtonsContainer.style.maxHeight = sideButtonsContainer.scrollHeight + "px";
                 } else {
-                    // बंद करने पर, max-height को 0 पर रीसेट करें
                     sideButtonsContainer.style.maxHeight = '0px';
                 }
             });
 
             function adjustMenuLayoutOnResize() {
-                if (window.innerWidth > 992) { // डेस्कटॉप व्यू
-                    // डेस्कटॉप पर .open क्लास और इनलाइन max-height स्टाइल हटा दें
-                    // ताकि CSS ग्रिड लेआउट और 'display: contents' प्रभावी हो
-                    sideButtonsContainer.classList.remove('open');
-                    sideButtonsContainer.style.maxHeight = null; 
-                } else { // मोबाइल व्यू
-                    // यदि मोबाइल पर मेनू खुला नहीं है, तो max-height को 0px सुनिश्चित करें
+                if (window.innerWidth > 992) { 
+                    sideButtonsContainer.classList.remove('open'); // मोबाइल-ओनली क्लास हटाएं
+                    sideButtonsContainer.style.maxHeight = null; // डेस्कटॉप पर इनलाइन स्टाइल हटाएं
+                } else { 
                     if (!sideButtonsContainer.classList.contains('open')) {
                         sideButtonsContainer.style.maxHeight = '0px';
                     } else {
-                        // यदि खुला है, तो scrollHeight को फिर से कैलकुलेट करें (यदि आवश्यक हो)
-                        // यह महत्वपूर्ण है यदि स्क्रीन का आकार बदलते समय मेनू खुला हो
+                        // यदि मेनू पहले से खुला है, तो ऊंचाई को पुनः समायोजित करें
                         sideButtonsContainer.style.maxHeight = sideButtonsContainer.scrollHeight + "px";
                     }
                 }
             }
-
-            // स्क्रीन रीसाइज और पेज लोड पर फंक्शन को कॉल करें
             window.addEventListener('resize', adjustMenuLayoutOnResize);
             window.addEventListener('load', adjustMenuLayoutOnResize); 
         } else {
