@@ -83,10 +83,8 @@
             flex-grow: 1;
             padding: 25px;
             background-color: white;
-            /* margin-left: 20px; -- साइड बटन आने से इसकी जरूरत बदल सकती है */
-            /* margin-right: 90px; -- साइड बटन आने से इसकी जरूरत बदल सकती है */
-            margin: 0 auto; /* कंटेंट को सेंटर में रखने के लिए यदि साइडबार न हो */
-            max-width: 1200px; /* कंटेंट की अधिकतम चौड़ाई */
+            margin: 0 auto; 
+            max-width: 1200px; 
             box-shadow: 0 0 15px rgba(0,0,0,0.07);
             border-radius: 8px;
         }
@@ -97,7 +95,7 @@
             padding-bottom: 10px;
             margin-top: 0;
             font-size: 1.8em;
-            text-align: center; /* हेडिंग को सेंटर में किया */
+            text-align: center; 
         }
         
         .college-details p {
@@ -109,21 +107,39 @@
         /* कॉलेज की मुख्य तस्वीर और साइड बटन के लिए स्टाइल */
         .college-main-photo {
             margin-top: 30px;
+            position: relative; /* मोबाइल मेनू बटन के लिए */
+        }
+        
+        /* मोबाइल के लिए हैमबर्गर मेनू बटन */
+        .mobile-menu-button {
+            display: none; /* डिफ़ॉल्ट रूप से छिपा हुआ */
+            background-color: #005A9C;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 15px;
         }
 
+        .photo-with-side-buttons-wrapper {
+            /* यह रैपर मोबाइल पर छिपाने/दिखाने के लिए है */
+        }
+        
         .photo-with-side-buttons {
             display: flex;
-            justify-content: space-between; /* बटनों और फोटो के बीच स्पेस */
-            align-items: flex-start; /* आइटम्स को ऊपर से अलाइन करें */
-            gap: 20px; /* आइटम्स के बीच गैप */
+            justify-content: space-between; 
+            align-items: flex-start; 
+            gap: 20px; 
             margin-top: 20px;
         }
 
         .side-buttons-column {
-            display: flex;
+            display: flex; /* डेस्कटॉप पर दिखेगा */
             flex-direction: column;
-            gap: 10px; /* बटनों के बीच गैप */
-            width: 200px; /* साइड कॉलम की चौड़ाई, एडजस्ट करें */
+            gap: 10px; 
+            width: 200px; 
         }
 
         .side-buttons-column a.side-btn {
@@ -144,9 +160,9 @@
         }
 
         .single-photo-container {
-            flex-grow: 1; /* फोटो कंटेनर बची हुई जगह ले लेगा */
-            max-width: 700px; /* फोटो की अधिकतम चौड़ाई, एडजस्ट करें */
-            margin: 0 auto; /* यदि फ्लेक्स-ग्रो के बाद भी जगह बचे तो सेंटर */
+            flex-grow: 1; 
+            max-width: 700px; 
+            margin: 0 auto; 
             border-radius: 10px;
             overflow: hidden; 
             box-shadow: 0 6px 18px rgba(0,0,0,0.15);
@@ -231,54 +247,89 @@
             text-decoration: underline;
         }
 
-        /* छोटे स्क्रीन के लिए बेसिक रिस्पॉन्सिवनेस */
-        @media (max-width: 992px) { /* टैबलेट और छोटे डिवाइस */
-            .photo-with-side-buttons {
-                flex-direction: column; /* कॉलम में स्टैक करें */
-                align-items: center; /* सेंटर में अलाइन करें */
-            }
-            .side-buttons-column {
-                width: 100%; /* पूरी चौड़ाई लें */
-                max-width: 400px; /* अधिकतम चौड़ाई */
-                margin-bottom: 20px;
-                flex-direction: row; /* बटन एक लाइन में आएं */
-                flex-wrap: wrap; /* यदि ज्यादा हों तो रैप करें */
-                justify-content: center;
-            }
-            .content-area {
-                margin-right: 20px; /* सोशल साइडबार के लिए जगह */
-                margin-left: 20px;
-            }
-        }
-        @media (max-width: 768px) { /* मोबाइल डिवाइस */
-             .header {
-                padding: 15px 20px;
-                flex-direction: column; /* हेडर को भी स्टैक करें */
+        /* रिस्पॉन्सिव स्टाइल - मोबाइल और छोटे टैबलेट के लिए (992px से कम) */
+        @media (max-width: 992px) {
+            .header {
+                padding: 20px; /* मोबाइल के लिए थोड़ी कम पैडिंग */
+                flex-direction: column; /* लोगो और नाम को स्टैक करें */
                 text-align: center;
             }
             .header img.logo {
                 height: 80px;
                 width: 80px;
-                margin-bottom: 10px;
                 margin-right: 0;
+                margin-bottom: 15px;
             }
             .header h1.college-name {
                 font-size: 2.5em;
             }
+
             .navbar ul {
-                flex-direction: column; /* नेवबार को भी स्टैक करें */
+                flex-direction: column;
+                align-items: center;
             }
-            .navbar ul li a {
-                padding: 12px 15px;
+             .navbar ul li {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
             }
-            .social-sidebar {
-                top: auto; /* हेडर के स्टैक होने के बाद टॉप बदलें */
-                bottom: 10px; /* नीचे फिक्स करें */
+            .navbar ul li:last-child {
+                border-bottom: none;
+            }
+
+
+            .mobile-menu-button {
+                display: block; /* मोबाइल पर मेनू बटन दिखाएं */
+                width: 100%;
+            }
+            
+            .photo-with-side-buttons-wrapper {
+                /* मोबाइल मेनू के खुलने-बंद होने का ट्रांजीशन */
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-in-out;
+            }
+            .photo-with-side-buttons-wrapper.open {
+                max-height: 1500px; /* कंटेंट के अनुसार पर्याप्त ऊंचाई दें */
+            }
+
+            .photo-with-side-buttons {
+                flex-direction: column; /* स्टैक करें: बटन, फोटो, बटन */
+                align-items: center; 
+                margin-top: 0; /* क्योंकि रैपर में मार्जिन बॉटम है */
+            }
+            .side-buttons-column {
+                width: 90%; /* मोबाइल पर कॉलम की चौड़ाई */
+                max-width: 400px;
+                margin-bottom: 20px; /* कॉलम के बीच स्पेस */
+                 /* display: flex; -- यह जावास्क्रिप्ट से नियंत्रित होगा */
+            }
+            .side-buttons-column.left-buttons {
+                order: 1; /* मोबाइल पर पहला बटन कॉलम */
+            }
+            .single-photo-container {
+                order: 2; /* मोबाइल पर फोटो बीच में */
+                width: 95%;
+                margin-bottom: 20px;
+            }
+             .side-buttons-column.right-buttons {
+                order: 3; /* मोबाइल पर दूसरा बटन कॉलम */
+            }
+
+
+            .content-area {
+                margin-right: 10px; /* सोशल साइडबार के लिए बहुत कम जगह */
+                margin-left: 10px;
+                padding: 15px;
+            }
+             .social-sidebar {
+                top: auto; 
+                bottom: 10px; 
                 right: 10px; 
-                width: auto; /* ऑटो चौड़ाई */
-                flex-direction: row; /* आइकन एक लाइन में */
+                width: auto; 
+                flex-direction: row; 
                 padding: 5px 10px;
-                background-color: rgba(248, 249, 250, 0.9); /* थोड़ा ट्रांसपेरेंट */
+                background-color: rgba(248, 249, 250, 0.9); 
             }
             .social-icon {
                 width: 36px;
@@ -287,18 +338,6 @@
             .social-icon svg {
                 width: 18px;
                 height: 18px;
-            }
-             .content-area {
-                margin-right: 10px; 
-                margin-left: 10px;
-                padding: 15px;
-            }
-            .college-main-photo h2 {
-                font-size: 1.5em;
-            }
-             .side-buttons-column a.side-btn {
-                font-size: 0.8em;
-                padding: 8px 10px;
             }
         }
 
@@ -338,29 +377,34 @@
 
             <section class="college-main-photo">
                 <h2>Campus Highlights & Quick Links</h2> 
-                <div class="photo-with-side-buttons">
-                    <div class="side-buttons-column left-buttons">
-                        <a href="#" class="side-btn">Books</a>
-                        <a href="#" class="side-btn">Online Class</a>
-                        <a href="#" class="side-btn">Successful Student</a>
-                        <a href="#" class="side-btn">Hostel</a>
-                        <a href="#" class="side-btn">Hostel Admission</a>
-                        <a href="#" class="side-btn">Teachers</a>
-                        <a href="#" class="side-btn">Courses</a>
-                    </div>
+                
+                <button class="mobile-menu-button" id="mobileMenuToggleBtn">☰ Quick Links Menu</button>
 
-                    <div class="single-photo-container">
-                        <img src="main-college-photo.jpg" alt="Beautiful view of the College Campus">
-                    </div>
+                <div class="photo-with-side-buttons-wrapper" id="sideButtonsWrapper">
+                    <div class="photo-with-side-buttons">
+                        <div class="side-buttons-column left-buttons">
+                            <a href="#" class="side-btn">Books</a>
+                            <a href="#" class="side-btn">Online Class</a>
+                            <a href="#" class="side-btn">Successful Student</a>
+                            <a href="#" class="side-btn">Hostel</a>
+                            <a href="#" class="side-btn">Hostel Admission</a>
+                            <a href="#" class="side-btn">Teachers</a>
+                            <a href="#" class="side-btn">Courses</a>
+                        </div>
 
-                    <div class="side-buttons-column right-buttons">
-                        <a href="#" class="side-btn">Hostel Photo</a>
-                        <a href="#" class="side-btn">Important Question</a>
-                        <a href="#" class="side-btn">Feedback</a>
-                        <a href="#" class="side-btn">Booking Now</a>
-                        <a href="#" class="side-btn">Available Hostel Sit</a>
-                        <a href="contact.html" class="side-btn">Contact Us (Duplicate)</a> <!-- संपर्क करें ऊपर भी है -->
-                        <a href="about.html" class="side-btn">About Us (Duplicate)</a> <!-- हमारे बारे में ऊपर भी है -->
+                        <div class="single-photo-container">
+                            <img src="main-college-photo.jpg" alt="Beautiful view of the College Campus">
+                        </div>
+
+                        <div class="side-buttons-column right-buttons">
+                            <a href="#" class="side-btn">Hostel Photo</a>
+                            <a href="#" class="side-btn">Important Question</a>
+                            <a href="#" class="side-btn">Feedback</a>
+                            <a href="#" class="side-btn">Booking Now</a>
+                            <a href="#" class="side-btn">Available Hostel Sit</a>
+                            <a href="contact.html" class="side-btn">Contact Us</a> 
+                            <a href="about.html" class="side-btn">About Us</a> 
+                        </div>
                     </div>
                 </div>
             </section>
@@ -388,6 +432,48 @@
     <footer class="footer">
         <p>Made By <a href="https://www.instagram.com/your_instagram_username_here/" target="_blank">Shourajit</a></p>
     </footer>
+
+    <script>
+        const mobileMenuToggleBtn = document.getElementById('mobileMenuToggleBtn');
+        const sideButtonsWrapper = document.getElementById('sideButtonsWrapper');
+
+        // डेस्कटॉप पर मेनू खुला रखें यदि स्क्रीन का आकार बदलता है
+        function checkScreenSize() {
+            if (window.innerWidth > 992) {
+                sideButtonsWrapper.classList.add('open'); // डेस्कटॉप पर हमेशा खुला
+                sideButtonsWrapper.style.maxHeight = 'none'; // max-height को हटाएं ताकि कंटेंट दिखे
+            } else {
+                // यदि मोबाइल व्यू पर है और पहले से खुला नहीं है, तो बंद रखें
+                if (!sideButtonsWrapper.classList.contains('open-manual')) {
+                     sideButtonsWrapper.classList.remove('open');
+                     sideButtonsWrapper.style.maxHeight = '0px';
+                }
+            }
+        }
+
+        mobileMenuToggleBtn.addEventListener('click', () => {
+            sideButtonsWrapper.classList.toggle('open');
+            sideButtonsWrapper.classList.toggle('open-manual'); // मैन्युअल टॉगल को ट्रैक करें
+            if (sideButtonsWrapper.classList.contains('open')) {
+                // जब मेनू खुलता है, तो max-height को कंटेंट के अनुसार सेट करें
+                // या एक बड़ी पर्याप्त वैल्यू दें
+                sideButtonsWrapper.style.maxHeight = sideButtonsWrapper.scrollHeight + "px";
+            } else {
+                sideButtonsWrapper.style.maxHeight = '0px';
+            }
+        });
+
+        // पेज लोड और रीसाइज पर स्क्रीन साइज की जाँच करें
+        window.addEventListener('load', checkScreenSize);
+        window.addEventListener('resize', checkScreenSize);
+        
+        // शुरू में मोबाइल पर मेनू बंद रखें
+        if (window.innerWidth <= 992) {
+            sideButtonsWrapper.style.maxHeight = '0px';
+            sideButtonsWrapper.classList.remove('open');
+        }
+
+    </script>
 
 </body>
 </html>
